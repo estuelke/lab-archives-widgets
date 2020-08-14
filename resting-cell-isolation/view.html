@@ -1,0 +1,419 @@
+<style type="text/css">.widget {
+	padding: 2px;
+	border: 1px solid rgb(204, 204, 204);
+	border-radius: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+
+	background-color: #edf2f7;
+	width: 100%;
+}
+
+.heading{
+	font-size:14px;
+	text-decoration: underline;
+	font-weight: bold;
+	margin-left: 15px;
+}
+
+input, td:not(.count-label):not(.units):not(.volume):not(.drug) {
+	text-align: center;
+}
+
+.section {
+	margin: 15px;
+	padding: 15px;
+	border: 1px solid black;
+	font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+	border-radius: 8px;
+	width: 90%;
+}
+
+.section:not(.pheresis-data):not(.notes){
+	background-color: #dbe4f0;
+}
+
+.pheresis-data, .notes {
+	background-color: LightSteelBlue;
+}
+
+.count, .aliquot{
+	width: 25px;
+}
+
+.aliquot2 {
+	width: 40px;
+}
+
+td:first-of-type > input:not(.aliquot):not(.aliquot2):not(.count) {
+	width: 100px;
+}
+
+td:not(:first-of-type) > input:not(.aliquot):not(.count) {
+	width: 40px;
+}
+
+.pheresis-data input  {
+	width: 130px;
+}
+
+.ph-input {
+	min-width: 160px;
+	margin-right: 15px;
+	font-weight: bold;
+	display: inline-block;
+}
+
+td, table, th {
+	border-collapse: collapse;
+	border: 1px solid black;
+	padding: 3px;
+	font-family: Tahoma, Geneva, sans-serif;
+}
+
+table {
+	width: 97%;
+	margin: 15px 15px 30px 15px; /* top, right, bottom, left */
+	background-color: #edf2f7;
+}
+
+th, .count-header, .count-label {
+	background-color: LightSteelBlue;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+.volume, .units, .count-label {
+	text-align: right;
+}
+
+.units {
+	border-left: hidden;
+}
+
+.no-wrap, td{
+	white-space: nowrap;
+}
+
+#notes{
+	margin: 15px;
+	padding: 15px;
+	width: 85%;
+	text-align: left;
+}
+</style>
+<div class="widget"><!-- General Information about Leuk/QVOA --><span class="heading">rCD4 Isolation</span>
+<div class="pheresis-data section"><span class="ph-input">Processing Date:</span><input class="input-change" id="leuk-date" name="leuk-date" type="date" /><br />
+<span class="ph-input">Technicians:</span><input id="techs" name="techs" type="text" /></div>
+<!-- Counting -->
+
+<div class="section">
+<table id="counts">
+	<thead>
+		<tr>
+			<th colspan="5">&nbsp;</th>
+			<th>Dilution</th>
+			<th>Final Concentration<br />
+			(10<sup>6</sup> cells/ml)</th>
+			<th>Total rCD4s<br />
+			(10<sup>6</sup> cells)</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td rowspan="2">Sysmex</td>
+			<td class="count-header" colspan="4">Concentration<br />
+			(10<sup>6</sup> cells/ml)</td>
+			<td rowspan="2"><input class="input-change" id="sysmex-dilution" name="sysmex-dilution" type="text" value="10" /></td>
+			<td rowspan="2"><span id="sysmex-final-concentration">&nbsp;</span></td>
+			<td rowspan="2"><span id="sysmex-total-cells">&nbsp;</span></td>
+		</tr>
+		<tr>
+			<td colspan="4"><input class="input-change" id="sysmex-concentration" name="sysmex-concentration" type="text" /></td>
+		</tr>
+		<tr>
+			<td rowspan="3">Manual</td>
+			<td class="count-header" colspan="4">Haemocytomer Counts</td>
+			<td rowspan="3"><input class="input-change" id="manual-dilution" name="manual-dilution" type="text" value="100" /></td>
+			<td rowspan="3"><span id="manual-final-concentration">&nbsp;</span></td>
+			<td rowspan="3"><span id="manual-total-cells">&nbsp;</span></td>
+		</tr>
+		<tr>
+			<td><input class="input-change count" id="manual1" name="manual1" type="text" /></td>
+			<td><input class="input-change count" id="manual2" name="manual2" type="text" /></td>
+			<td><input class="input-change count" id="manual3" name="manual3" type="text" /></td>
+			<td><input class="input-change count" id="manual4" name="manual4" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input class="input-change count" id="manual5" name="manual5" type="text" /></td>
+			<td><input class="input-change count" id="manual6" name="manual6" type="text" /></td>
+			<td><input class="input-change count" id="manual7" name="manual7" type="text" /></td>
+			<td><input class="input-change count" id="manual8" name="manual8" type="text" /></td>
+		</tr>
+		<tr>
+			<td class="count-header" rowspan="2">&nbsp;</td>
+			<td class="count-header" colspan="4">Resuspended Volume</td>
+			<td class="count-label">Total rCD4 Average</td>
+			<td><span id="average-cell-concentration">&nbsp;</span></td>
+			<td><span id="average-cells">&nbsp;</span></td>
+		</tr>
+		<tr>
+			<td colspan="4"><input class="input-change" id="volume-resuspended" name="volume-resuspended" type="text" value="10" /> ml</td>
+			<td class="count-label" colspan="2">Remaining rCD4s</td>
+			<td><span id="remaining-cells">&nbsp;</span></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<!-- Cell Portioning -->
+
+<div class="section">
+<table class="aliquots" id="columns-facs-pellets">
+	<thead>
+		<tr>
+			<th>&nbsp;</th>
+			<th>rCD4s Needed<br />
+			per Aliquot<br />
+			(10<sup>6</sup>)</th>
+			<th>Number of<br />
+			Aliquots</th>
+			<th>Volume rCD4s<br />
+			per Aliquot</th>
+			<th>Volume<br />
+			2% PBS/FBS</th>
+			<th colspan="2">Total Volume</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="cell-calculation">
+			<td>FACS</td>
+			<td><input class="input-change cells-needed" name="cells-needed1" type="text" value="7" /></td>
+			<td><input class="input-change aliquot num-aliquots" name="num-aliquots1" type="text" value="1" /></td>
+			<td class="volume"><span class="volume-cells">&nbsp;</span></td>
+			<td class="volume"><span class="buffer-volume">&nbsp;</span></td>
+			<td class="volume"><input class="input-change total-volume" name="total-volume1" type="text" value="3.5" /></td>
+			<td class="volume units">ml</td>
+		</tr>
+		<tr class="cell-calculation">
+			<td>Pellets</td>
+			<td><input class="input-change cells-needed" name="cells-needed2" type="text" value="5" /></td>
+			<td><input class="input-change aliquot num-aliquots" name="num-aliquots2" type="text" value="4" /></td>
+			<td class="volume"><span class="volume-cells">&nbsp;</span></td>
+			<td>N/A</td>
+			<td colspan="2">N/A</td>
+		</tr>
+		<tr class="cell-calculation">
+			<td>RLT Pellets</td>
+			<td><input class="input-change cells-needed" name="cells-needed3" type="text" value="5" /></td>
+			<td><input class="input-change aliquot num-aliquots" name="num-aliquots3" type="text" value="0" /></td>
+			<td class="volume"><span class="volume-cells">&nbsp;</span></td>
+			<td>300 &micro;l RLT</td>
+			<td colspan="2">N/A</td>
+		</tr>
+		<tr class="cell-calculation">
+			<td>RNA Plate</td>
+			<td><input class="input-change cells-needed" name="cells-needed4" type="text" value="80" /></td>
+			<td><input class="input-change aliquot num-aliquots" name="num-aliquots4" type="text" value="0" /></td>
+			<td class="volume"><span class="volume-cells">&nbsp;</span></td>
+			<td>N/A</td>
+			<td colspan="2">N/A</td>
+		</tr>
+		<tr class="cell-calculation">
+			<td><input class="input-change recipient" name="recipient5" type="text" value="" /></td>
+			<td><input class="input-change cells-needed" name="cells-needed5" type="text" value="" /></td>
+			<td><input class="input-change aliquot num-aliquots" name="num-aliquots5" type="text" value="" /></td>
+			<td class="volume"><span class="volume-cells">&nbsp;</span></td>
+			<td>N/A</td>
+			<td colspan="2">N/A</td>
+		</tr>
+		<tr class="cell-calculation">
+			<td><input class="input-change recipient" name="recipient6" type="text" value="" /></td>
+			<td><input class="input-change cells-needed" name="cells-needed6" type="text" value="" /></td>
+			<td><input class="input-change aliquot num-aliquots" name="num-aliquots6" type="text" value="" /></td>
+			<td class="volume"><span class="volume-cells">&nbsp;</span></td>
+			<td>N/A</td>
+			<td colspan="2">N/A</td>
+		</tr>
+		<tr class="cell-calculation">
+			<td><input class="input-change recipient" name="recipient7" type="text" value="" /></td>
+			<td><input class="input-change cells-needed" name="cells-needed7" type="text" value="" /></td>
+			<td><input class="input-change aliquot num-aliquots" name="num-aliquots7" type="text" value="" /></td>
+			<td class="volume"><span class="volume-cells">&nbsp;</span></td>
+			<td>N/A</td>
+			<td colspan="2">N/A</td>
+		</tr>
+	</tbody>
+</table>
+
+<table class="aliquots" id="freezing">
+	<thead>
+		<tr>
+			<th>Recipient</th>
+			<th>rCD4s Needed<br />
+			(10<sup>6</sup>)</th>
+			<th>rCD4s Per Tube<br />
+			(10<sup>6</sup>)</th>
+			<th>Volume<br />
+			per Tube</th>
+			<th>Total<br />
+			Tubes</th>
+			<th>Volume<br />
+			rCD4s</th>
+			<th>Volume<br />
+			FBS</th>
+			<th>Volume<br />
+			20% DMSO/FBS</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="freeze-calculation">
+			<td><input class="input-change recipient" name="recipient8" type="text" value="Nancie" /></td>
+			<td><input class="input-change cells-needed" name="cells-needed8" type="text" value="100" /></td>
+			<td><input class="input-change cells-per-tube" name="cells-per-tube8" type="text" value="10" /></td>
+			<td><input class="input-change aliquot vol-per-tube" name="vol-per-tube8" type="text" value="2" /></td>
+			<td><span class="num-tubes">&nbsp;</span></td>
+			<td class="volume"><span class="volume-cells">&nbsp;</span></td>
+			<td class="volume"><span class="fbs-volume">&nbsp;</span></td>
+			<td class="volume"><span class="dmso-volume">&nbsp;</span></td>
+		</tr>
+		<tr class="freeze-calculation">
+			<td><input class="input-change recipient" name="recipient9" type="text" value="" /></td>
+			<td><input class="input-change cells-needed" name="cells-needed9" type="text" value="" /></td>
+			<td><input class="input-change cells-per-tube" name="cells-per-tube9" type="text" value="" /></td>
+			<td><input class="input-change aliquot vol-per-tube" name="vol-per-tube9" type="text" value="" /></td>
+			<td><span class="num-tubes">&nbsp;</span></td>
+			<td class="volume"><span class="volume-cells">&nbsp;</span></td>
+			<td class="volume"><span class="fbs-volume">&nbsp;</span></td>
+			<td class="volume"><span class="dmso-volume">&nbsp;</span></td>
+		</tr>
+		<tr class="freeze-calculation">
+			<td><input class="input-change recipient" name="recipient10" type="text" value="" /></td>
+			<td><input class="input-change cells-needed" name="cells-needed10" type="text" value="" /></td>
+			<td><input class="input-change cells-per-tube" name="cells-per-tube10" type="text" value="" /></td>
+			<td><input class="input-change aliquot vol-per-tube" name="vol-per-tube10" type="text" value="" /></td>
+			<td><span class="num-tubes">&nbsp;</span></td>
+			<td class="volume"><span class="volume-cells">&nbsp;</span></td>
+			<td class="volume"><span class="fbs-volume">&nbsp;</span></td>
+			<td class="volume"><span class="dmso-volume">&nbsp;</span></td>
+		</tr>
+		<tr class="freeze-calculation">
+			<td><input class="input-change recipient" name="recipient11" type="text" value="" /></td>
+			<td><input class="input-change cells-needed" name="cells-needed11" type="text" value="" /></td>
+			<td><input class="input-change cells-per-tube" name="cells-per-tube11" type="text" value="" /></td>
+			<td><input class="input-change aliquot vol-per-tube" name="vol-per-tube11" type="text" value="" /></td>
+			<td><span class="num-tubes">&nbsp;</span></td>
+			<td class="volume"><span class="volume-cells">&nbsp;</span></td>
+			<td class="volume"><span class="fbs-volume">&nbsp;</span></td>
+			<td class="volume"><span class="dmso-volume">&nbsp;</span></td>
+		</tr>
+		<tr class="freeze-calculation">
+			<td><input class="input-change recipient" name="recipient12" type="text" value="" /></td>
+			<td><input class="input-change cells-needed" name="cells-needed12" type="text" value="" /></td>
+			<td><input class="input-change cells-per-tube" name="cells-per-tube12" type="text" value="" /></td>
+			<td><input class="input-change aliquot vol-per-tube" name="vol-per-tube12" type="text" value="" /></td>
+			<td><span class="num-tubes">&nbsp;</span></td>
+			<td class="volume"><span class="volume-cells">&nbsp;</span></td>
+			<td class="volume"><span class="fbs-volume">&nbsp;</span></td>
+			<td class="volume"><span class="dmso-volume">&nbsp;</span></td>
+		</tr>
+		<tr>
+			<td class="count-label" colspan="6">Total</td>
+			<td class="volume"><span id="total-fbs-volume">&nbsp;</span></td>
+			<td class="volume"><span id="total-dmso-volume">&nbsp;</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<table class="aliquots" id="culture">
+	<thead>
+		<tr>
+			<th rowspan="2">Recipient</th>
+			<th rowspan="2">rCD4s<br />
+			Needed<br />
+			(10<sup>6</sup>)</th>
+			<th rowspan="2">Volume<br />
+			rCD4s</th>
+			<th colspan="4">Drugs</th>
+			<th rowspan="2">Volume<br />
+			cIMDM</th>
+		</tr>
+		<tr>
+			<th>Drug</th>
+			<th>[Stock]</th>
+			<th>[Final]</th>
+			<th>Volume</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="cell-calculation drug-calculation no-wrap">
+			<td rowspan="3"><input class="input-change recipient" name="recipient16" type="text" value="" /></td>
+			<td rowspan="3"><span class="cells-needed" id="rcd4-needed">&nbsp;</span></td>
+			<td class="volume" rowspan="3"><input class="input-change volume-cells aliquot2" id="rcd4-volume" name="rcd4-volume" type="text" value="" /> ml</td>
+			<td>IL-2</td>
+			<td class="drug"><input class="input-change drug-stock aliquot2" name="drug-stock16a" type="text" value="20000" /> <span class="drug-stock-units">U/ml</span></td>
+			<td class="drug"><input class="input-change drug-final aliquot2" name="drug-final16a" type="text" value="0" /> <span class="drug-final-units">U/ml</span></td>
+			<td><span class="drug-volume no-wrap">&nbsp;</span></td>
+			<td rowspan="3"><input class="input-change media-volume aliquot2" name="media-volume16" type="text" value="" /> ml</td>
+		</tr>
+		<tr class="drug-calculation">
+			<td><input class="input-change aliquot2" name="drug-name16b" type="text" value="" /></td>
+			<td class="drug"><input class="input-change drug-stock aliquot2" name="drug-stock16b" type="text" value="" /> <select class="input-change drug-stock-units" name="drug-stock-units16b"><option value="[Select]">[Select]</option></select></td>
+			<td class="drug"><input class="input-change aliquot drug-final aliquot2" name="drug-final16b" type="text" value="" /> <select class="input-change drug-final-units" name="drug-final-units16b"><option value="[Select]">[Select]</option> </select><input class="drug-final-hidden" name="drug-final-hidden16b" type="hidden" value="" /></td>
+			<td><span class="drug-volume no-wrap">&nbsp;</span></td>
+		</tr>
+		<tr class="drug-calculation">
+			<td><input class="input-change aliquot2" name="drug-name16c" type="text" value="" /></td>
+			<td class="drug"><input class="input-change drug-stock aliquot2" name="drug-stock16c" type="text" value="" /> <select class="input-change drug-stock-units" name="drug-stock-units16c"><option value="[Select]">[Select]</option> </select></td>
+			<td class="drug"><input class="input-change drug-final aliquot2" name="drug-final16c" type="text" value="" /> <select class="input-change drug-final-units" name="drug-final-units16c"><option value="[Select]">[Select]</option> </select><input class="drug-final-hidden" name="drug-final-hidden16c" type="hidden" value="" /></td>
+			<td><span class="drug-volume no-wrap">&nbsp;</span></td>
+		</tr>
+		<tr class="cell-calculation drug-calculation no-wrap">
+			<td rowspan="3"><input class="input-change recipient" name="recipient17" type="text" value="" /></td>
+			<td rowspan="3"><input class="input-change cells-needed aliquot2" name="cells-needed17" type="text" value="" /></td>
+			<td class="volume" rowspan="3"><span class="volume-cells">&nbsp;</span></td>
+			<td>IL-2</td>
+			<td class="drug"><input class="input-change drug-stock aliquot2" name="drug-stock17a" type="text" value="20000" /> <span class="drug-stock-units">U/ml</span></td>
+			<td class="drug"><input class="input-change drug-final aliquot2" name="drug-final17a" type="text" value="0" /> <span class="drug-final-units">U/ml</span></td>
+			<td><span class="drug-volume no-wrap">&nbsp;</span></td>
+			<td rowspan="3"><input class="input-change media-volume aliquot2" name="media-volume17" type="text" value="" /> ml</td>
+		</tr>
+		<tr class="drug-calculation">
+			<td><input class="input-change aliquot2" name="drug-name17b" type="text" value="" /></td>
+			<td class="drug"><input class="input-change drug-stock aliquot2" name="drug-stock17b" type="text" value="" /> <select class="input-change drug-stock-units" name="drug-stock-units17b"><option value="[Select]">[Select]</option> </select></td>
+			<td class="drug"><input class="input-change aliquot drug-final aliquot2" name="drug-final17b" type="text" value="" /> <select class="input-change drug-final-units" name="drug-final-units17b"><option value="[Select]">[Select]</option> </select><input class="drug-final-hidden" name="drug-final-hidden17b" type="hidden" value="" /></td>
+			<td><span class="drug-volume no-wrap">&nbsp;</span></td>
+		</tr>
+		<tr class="drug-calculation">
+			<td><input class="input-change aliquot2" name="drug-name17c" type="text" value="" /></td>
+			<td class="drug"><input class="input-change drug-stock aliquot2" name="drug-stock17c" type="text" value="" /> <select class="input-change drug-stock-units" name="drug-stock-units17c"><option value="[Select]">[Select]</option> </select></td>
+			<td class="drug"><input class="input-change drug-final aliquot2" name="drug-final17c" type="text" value="" /> <select class="input-change drug-final-units" name="drug-final-units17c"><option value="[Select]">[Select]</option> </select><input class="drug-final-hidden" name="drug-final-hidden17c" type="hidden" value="" /></td>
+			<td><span class="drug-volume no-wrap">&nbsp;</span></td>
+		</tr>
+		<tr class="cell-calculation drug-calculation no-wrap">
+			<td rowspan="3"><input class="input-change recipient" name="recipient18" type="text" value="" /></td>
+			<td rowspan="3"><input class="input-change cells-needed aliquot2" name="cells-needed18" type="text" value="" /></td>
+			<td class="volume" rowspan="3"><span class="volume-cells">&nbsp;</span></td>
+			<td>IL-2</td>
+			<td class="drug"><input class="input-change drug-stock aliquot2" name="drug-stock18a" type="text" value="20000" /> <span class="drug-stock-units">U/ml</span></td>
+			<td class="drug"><input class="input-change drug-final aliquot2" name="drug-final18a" type="text" value="0" /> <span class="drug-final-units">U/ml</span></td>
+			<td><span class="drug-volume no-wrap">&nbsp;</span></td>
+			<td rowspan="3"><input class="input-change media-volume aliquot2" name="media-volume18" type="text" value="" /> ml</td>
+		</tr>
+		<tr class="drug-calculation">
+			<td><input class="input-change aliquot2" name="drug-name18b" type="text" value="" /></td>
+			<td class="drug"><input class="input-change drug-stock aliquot2" name="drug-stock18b" type="text" value="" /> <select class="input-change drug-stock-units" name="drug-stock-units18b"><option value="[Select]">[Select]</option> </select></td>
+			<td class="drug"><input class="input-change aliquot drug-final aliquot2" name="drug-final18b" type="text" value="" /> <select class="input-change drug-final-units" name="drug-final-units18b"><option value="[Select]">[Select]</option> </select><input class="drug-final-hidden" name="drug-final-hidden18b" type="hidden" value="" /></td>
+			<td><span class="drug-volume no-wrap">&nbsp;</span></td>
+		</tr>
+		<tr class="drug-calculation">
+			<td><input class="input-change aliquot2" name="drug-name18c" type="text" value="" /></td>
+			<td class="drug"><input class="input-change drug-stock aliquot2" name="drug-stock18c" type="text" value="" /> <select class="input-change drug-stock-units" name="drug-stock-units18c"><option value="[Select]">[Select]</option> </select></td>
+			<td class="drug"><input class="input-change drug-final aliquot2" name="drug-final18c" type="text" value="" /> <select class="input-change drug-final-units" name="drug-final-units18c"><option value="[Select]">[Select]</option> </select><input class="drug-final-hidden" name="drug-final-hidden18c" type="hidden" value="" /></td>
+			<td><span class="drug-volume no-wrap">&nbsp;</span></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<div class="notes section" id="note-section"><span class="heading">Notes &amp; Discrepancies</span><br />
+<textarea id="notes" name="notes"></textarea></div>
+</div>

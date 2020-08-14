@@ -1,0 +1,175 @@
+<style type="text/css">.widget {
+padding: 2px;
+border: 1px solid rgb(204, 204, 204);
+border-radius: 5px;
+font-family: Arial, Helvetica, sans-serif;
+background-color: #edf2f7;
+width: 100%;
+}
+
+.heading{
+font-size: 14px;
+text-decoration: underline;
+font-weight: bold;
+margin-left: 15px;
+}
+
+input {
+text-align: left;
+width: 100%;
+}
+
+.section {
+margin: 15px;
+padding: 15px;
+border: 1px solid black;
+font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+border-radius: 8px;
+background-color: LightSteelBlue;
+}
+
+.metadata input {
+height: 32px;
+font-size: 14px;
+}
+
+.exp-input {
+font-style: italic;
+font-size: 14px;
+}
+
+.mandatory {
+color: red;
+}
+
+.grid-container {
+display: grid;
+grid-template-columns: 200px 200px 200px 200px;
+grid-template-rows: 14px 32px 14px 32px 14px 75px 14px 32px 14px 75px;
+grid-gap: 10px;
+}
+
+.grid-container.-toggled {
+    grid-template-rows: 14px 32px 0px 0px 14px 75px 14px 32px 14px 75px; 
+}
+
+.grid-container.-toggled .toggle-hidden {
+    visibility: hidden;
+}
+
+.four-column-item {
+grid-column-start: 1;
+grid-column-end: 5;
+}
+
+.three-column-item {
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+button {
+    text-align: center;
+    width: 50%;
+    height: 32px;
+    border: 1px solid white;
+    background-color:  #edf2f7;
+    border-radius: 8px;
+}
+
+button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+textarea {
+width: 100%;
+height: 100%;
+}
+
+.tooltip{
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 0%;
+    right: 100%;
+    margin-right: 10px;
+    width: 160px;
+    font-size: 14px;
+    font-style: normal;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 15%;
+  left: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent black;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+</style>
+<div class="widget"><!-- General Information --><span class="heading">Experiment Cover Sheet</span>
+<div class="grid-container metadata section" id="grid-container">
+<div><span class="exp-input">Experiment Date <span class="mandatory">*</span></span></div>
+
+<div><span class="exp-input tooltip">Project <span class="mandatory">*</span> <span class="tooltiptext">P[#][letter]<br />
+(i.e. P1 or P1a)</span> </span></div>
+
+<div><span class="exp-input tooltip">Researcher(s) <span class="mandatory">*</span> <span class="tooltiptext">Initials of each person separated by a comma</span> </span></div>
+
+<div><span class="exp-input tooltip">Experiment ID <span class="mandatory">*</span> <span class="tooltiptext">Incremental numbered designator or very brief descriptor</span> </span></div>
+
+<div><input class="input-change" id="experiment-date" name="experiment-date_mandatory" type="date" /></div>
+
+<div><input class="input-change" id="project" name="project_mandatory" type="text" /></div>
+
+<div><input class="input-change" id="researchers" name="researchers_mandatory" type="text" /></div>
+
+<div><input class="input-change" id="experiment-id" name="experiment-id_mandatory" type="text" /></div>
+
+<div class="four-column-item"><span class="exp-input" id="sugg-file-label">Suggested Page and File Name</span></div>
+
+<div class="three-column-item"><input id="suggested-filename" name="suggested-filename" type="text" value="Please fill out all information above" /></div>
+
+<div class="toggle-hidden"><button id="copy-filename" onclick="my_widget_script.copy_filename()" type="button">Copy Filename</button></div>
+
+<div class="four-column-item"><span class="exp-input">Objective/Description</span><span class="mandatory">*</span></div>
+
+<div class="four-column-item"><textarea id="objective-description" name="objective-description_mandatory"></textarea></div>
+
+<div><span class="exp-input">Principal Investigator</span></div>
+
+<div><span class="exp-input">Assay(s)</span></div>
+
+<div><span class="exp-input">PID(s)</span></div>
+
+<div><span class="exp-input">Compound(s)</span></div>
+
+<div><input id="principal-investigator" name="principal-investigator" type="text" /></div>
+
+<div><input id="assays" name="assays" type="text" /></div>
+
+<div><input id="pids" name="pids" type="text" /></div>
+
+<div><input id="compounds" name="compounds" type="text" /></div>
+
+<div class="four-column-item"><span class="exp-input">Associated Files</span></div>
+
+<div class="four-column-item"><textarea id="associated-files" name="associated-files"></textarea></div>
+</div>
+</div>

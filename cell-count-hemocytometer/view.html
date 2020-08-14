@@ -1,0 +1,81 @@
+<p><strong>Cell Type/Description:</strong>&nbsp;<input name="cell_type" style="background-color:#FFD89F" type="text" /></p>
+
+<table border="1" cellpadding="1" cellspacing="0" style="width: 385px; font-family:calibri">
+	<thead>
+		<tr>
+			<th scope="row">&nbsp;</th>
+			<th scope="col" style="width: 181px;">Side A</th>
+			<th scope="col" style="width: 182px;">Side B</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th scope="row">Counts</th>
+			<td style="width: 181px; text-align: center;"><input name="a1_number" style="background-color:#FFD89F" type="text" /><br />
+			<input name="a2_number" style="background-color:#FFD89F" type="text" /><br />
+			<input name="a3_number" style="background-color:#FFD89F" type="text" /><br />
+			<input name="a4_number" style="background-color:#FFD89F" type="text" /></td>
+			<td style="width: 182px; text-align: center;"><input name="b1_number" style="background-color:#FFD89F" type="text" /><br />
+			<input name="b2_number" style="background-color:#FFD89F" type="text" /><br />
+			<input name="b3_number" style="background-color:#FFD89F" type="text" /><br />
+			<input name="b4_number" style="background-color:#FFD89F" type="text" /></td>
+		</tr>
+		<tr>
+			<th scope="row">Average</th>
+			<td style="width: 181px; text-align: center;"><input name="a_average_formula" type="text" value="(#{a1_number} + #{a2_number} + #{a3_number} + #{a4_number}) / 4" /></td>
+			<td style="width: 182px; text-align: center;"><input name="b_average_formula" type="text" value="(#{b1_number} + #{b2_number} + #{b3_number} + #{b4_number}) / 4" /></td>
+		</tr>
+		<tr>
+			<th scope="row">Total Average</th>
+			<td colspan="2" rowspan="1" style="width: 181px; text-align: center;"><input name="total_average_formula" type="text" value="(#{a_average_formula} + #{b_average_formula}) / 2" /></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<table border="1" cellpadding="3" cellspacing="0" style="width:500px; font-family:calibri">
+	<thead>
+		<tr>
+			<th scope="row">&nbsp;</th>
+			<th scope="col" style="width: 140px;">
+			<p>Initial Concentration<br />
+			(<strong style="line-height: 20.8px;">x 10<sup>6</sup>&nbsp;cells/ml)</strong></p>
+			</th>
+			<th scope="col" style="width: 31px;">Dilution Factor</th>
+			<th scope="col">
+			<p>Final Concentration<br />
+			(<strong style="line-height: 20.8px;">x 10<sup>6</sup>&nbsp;cells/ml)</strong></p>
+			</th>
+			<th scope="col">
+			<p>Average<br />
+			<strong style="line-height: 20.8px;">(x 10<sup>6</sup>&nbsp;cells/ml)</strong></p>
+			</th>
+			<th scope="col">
+			<p>Total Cell Volume<br />
+			(ml)</p>
+			</th>
+			<th scope="col">
+			<p>Total Cells<br />
+			<strong style="line-height: 20.8px; text-align: center;">(x 10<sup>6</sup>&nbsp;cells)</strong></p>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th scope="row">Manual</th>
+			<td style="width: 140px;"><input name="manual_initial_formula" size="10" type="text" value="(#{total_average_formula} * 10000)/1000000" /></td>
+			<td style="width: 31px;"><strong style="line-height: 20.8px;"><input name="dilution_factor_number" size="5" style="background-color:#FFD89F" type="text" /></strong></td>
+			<td style="text-align: center;"><b style="line-height: 20.8px;"><input name="manual_count_formula" size="10" type="text" value="#{manual_initial_formula} * #{dilution_factor_number}" /></b></td>
+			<td colspan="1" rowspan="2"><input name="manual_sysmex_average_formula" size="10" type="text" value="(#{sysmex_concentration_formula} + #{manual_count_formula}) / 2" /></td>
+			<td colspan="1" rowspan="2"><b style="line-height: 20.8px;"><input name="cell_volume_number" size="5" style="background-color:#FFD89F" type="text" /></b></td>
+			<td colspan="1" rowspan="2"><b style="line-height: 20.8px;"><input name="total_cells_formula" size="10" type="text" value="#{manual_sysmex_average_formula} * #{cell_volume_number}" /></b></td>
+		</tr>
+		<tr>
+			<th scope="row">Sysmex</th>
+			<td style="width: 140px;"><input name="sysmex_number" size="10" style="background-color:#FFD89F" type="text" /></td>
+			<td style="width: 31px;"><strong style="line-height: 20.8px;"><input name="sysmex_dilution_number" size="5" style="background-color:#FFD89F" type="text" /></strong></td>
+			<td><input name="sysmex_concentration_formula" size="10" type="text" value="#{sysmex_dilution_number} * #{sysmex_number}" /></td>
+		</tr>
+	</tbody>
+</table>

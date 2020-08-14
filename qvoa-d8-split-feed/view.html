@@ -1,0 +1,312 @@
+<div style="padding: 2px; border: 1px solid rgb(204, 204, 204); border-radius: 5px; font-family: Arial, Helvetica, sans-serif; background-color: rgb(238, 238, 238);">
+<h2 style="font-size: 11px;"><span style="font-size:14px;"><u><strong>QVOA: D8 Split and Feed</strong></u></span></h2>
+
+<p style="font-size:11px;"><em>See Protocols section for step-by-step instructions.</em></p>
+
+<p>&nbsp;</p>
+
+<table style="font-size: 11px;">
+	<tbody>
+		<tr>
+			<td style="background-color: white; border: 1px solid #000;" width="15">&nbsp;</td>
+			<td>Please manually fill in or update values (if necessary).</td>
+		</tr>
+		<tr>
+			<td style="background-color: #ffeb99; border: 1px solid #000;" width="15">&nbsp;</td>
+			<td>Values differ from default. Please ensure numbers are correct.</td>
+		</tr>
+		<tr>
+			<td style="background-color: #a5ffb7; border: 1px solid #000;" width="15">&nbsp;</td>
+			<td>Volumes to pipet.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<table class="change" id="table1" style="font-size: 11px;">
+	<tbody>
+		<tr>
+			<td colspan="5" style="border-top: 1px solid #000;"><span style="font-size:14px;"><u><strong>Assay Information</strong></u></span></td>
+		</tr>
+		<tr>
+			<td colspan="5">&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Technician(s)</td>
+			<td style="text-align:center;"><input id="technicians" name="technicians" size="10" style="text-align:center;" type="text" /></td>
+			<td colspan="3">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="5">&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td style="text-align:center;">6-Wells</td>
+			<td style="text-align:center;">12-Wells</td>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Wells</td>
+			<td><input class="input-change" id="wells-6-num" name="wells-6-num_number" size="10" style="text-align:center;" type="text" /></td>
+			<td><input class="input-change" id="wells-12-num" name="wells-12-num_number" size="10" style="text-align:center;" type="text" /></td>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="5">&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td style="text-align:center;">Feeders from Flask<br />
+			(x10<sup>6</sup>&nbsp;cells)</td>
+			<td style="text-align:center;">Volume cIMDM<br />
+			(ml)</td>
+			<td style="text-align:center;">[Stock]<br />
+			(x10<sup>6</sup>&nbsp;cells/ml)</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Feeder Stock</td>
+			<td><input class="input-change" id="feeders-from-flask" name="feeders-from-flask_number" size="10" style="text-align:center;" type="text" /></td>
+			<td><input class="input-change" id="feeders-volume" name="feeders-volume_number" size="10" style="text-align:center;" type="text" /></td>
+			<td><input id="feed-overall-stock-conc" name="feed-overall-stock-conc_number" readonly="readonly" size="10" style="text-align:center; background-color:#F0E6F0" type="text" /></td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="5">&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td style="text-align:center;">cIMDM<br />
+			(ml)</td>
+			<td style="text-align:center;">IL-2<br />
+			(&micro;l)</td>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td rowspan="2">Media/IL-2 Needed<br />
+			<em style="font-size:10px">Numbers are approximate</em></td>
+			<td><input id="media-needed" name="media-needed_number" readonly="readonly" size="10" style="text-align:center; background-color:#F0E6F0" type="text" /></td>
+			<td><input id="il2-needed" name="il2-needed_number" readonly="readonly" size="10" style="text-align:center; background-color:#F0E6F0" type="text" /></td>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="5">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="5" style="border-bottom: 1px solid #000;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="5" style="border-bottom: 1px solid #000;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td><u><span style="font-size:14px;"><strong>12-Well Feed Stock</strong></span></u></td>
+			<td style="text-align:center;">Initial Volume<br />
+			(ml)</td>
+			<td style="text-align:center;">Overage<br />
+			(ml)</td>
+			<td style="text-align:center;">Total Volume<br />
+			(ml)</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><input id="feed12-media-initial" name="feed12-media-initial_number" readonly="readonly" size="10" style="text-align:center; background-color:#F0E6F0" type="text" /></td>
+			<td><input class="input-change" id="feed12-overage" name="feed12-overage_number" size="10" style="text-align:center;" type="text" /></td>
+			<td><input id="feed12-media-final" name="feed12-media-final_number" readonly="readonly" size="10" style="text-align:center; background-color:#F0E6F0" type="text" /></td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="5">
+			<div id="feed12-error-msg" style="text-align:right; color:red; visibility:hidden"><strong>NOT ENOUGH FEEDERS: Check feeders and volume above</strong></div>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td style="text-align:center;">[Stock]</td>
+			<td style="text-align:center;">[Final]</td>
+			<td style="text-align:center;">Total Volume</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Feeder Stock (x10<sup>6</sup> cells/ml)</td>
+			<td><input id="feed12-stock-conc" name="feed12-stock-conc_number" readonly="readonly" size="10" style="text-align:center; background-color:#F0E6F0" type="text" /></td>
+			<td><input class="input-change" id="feed12-final-conc" name="feed12-final-conc_number" size="10" style="text-align:center;" type="text" value="0.67" /></td>
+			<td><input id="feed12-feeders-to-add" name="feed12-feeders-to-add_number" readonly="readonly" size="10" style="text-align:center; background-color:#a5ffb7" type="text" /></td>
+			<td>ml</td>
+		</tr>
+		<tr>
+			<td>IL-2 (U/ml)</td>
+			<td><input class="input-change" id="feed12-il2-stock-conc" name="feed12-il2-stock-conc_number" size="10" style="text-align:center;" type="text" value="20000" /></td>
+			<td><input class="input-change" id="feed12-il2-final-conc" name="feed12-il2-final-conc_number" size="10" style="text-align:center;" type="text" value="5" /></td>
+			<td><input id="feed12-il2-to-add" name="feed12-il2-to-add_number" readonly="readonly" size="10" style="text-align:center; background-color:#a5ffb7" type="text" /></td>
+			<td>&micro;l</td>
+		</tr>
+		<tr>
+			<td>cIMDM</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td><input id="feed12-media-to-add" name="feed12-media-to-add_number" readonly="readonly" size="10" style="text-align:center; background-color:#a5ffb7" type="text" /></td>
+			<td>ml</td>
+		</tr>
+		<tr>
+			<td colspan="5">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="5" style="border-bottom: 1px solid #000;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td><u><span style="font-size:14px;"><strong>6-Well Feed Stock</strong></span></u></td>
+			<td style="text-align:center;">Initial Volume<br />
+			(ml)</td>
+			<td style="text-align:center;">Overage<br />
+			(ml)</td>
+			<td style="text-align:center;">Total Volume<br />
+			(ml)</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><input id="feed6-media-initial" name="feed6-media-initial_number" readonly="readonly" size="10" style="text-align:center; background-color:#F0E6F0" type="text" /></td>
+			<td><input class="input-change" id="feed6-overage" name="feed6-overage_number" size="10" style="text-align:center;" type="text" /></td>
+			<td><input id="feed6-media-final" name="feed6-media-final_number" readonly="readonly" size="10" style="text-align:center; background-color:#F0E6F0" type="text" /></td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="5">
+			<div id="feed6-error-msg" style="text-align:right; color:red; visibility:hidden"><strong>NOT ENOUGH FEEDERS: Check feeders and volume above</strong></div>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td style="text-align:center;">[Stock]</td>
+			<td style="text-align:center;">[Final]</td>
+			<td style="text-align:center;">Total Volume</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Feeder Stock (x10<sup>6</sup> cells/ml)</td>
+			<td><input id="feed6-stock-conc" name="feed6-stock-conc_number" readonly="readonly" size="10" style="text-align:center; background-color:#F0E6F0" type="text" /></td>
+			<td><input class="input-change" id="feed6-final-conc" name="feed6-final-conc_number" size="10" style="text-align:center;" type="text" value="1" /></td>
+			<td><input id="feed6-feeders-to-add" name="feed6-feeders-to-add_number" readonly="readonly" size="10" style="text-align:center; background-color:#a5ffb7" type="text" /></td>
+			<td>ml</td>
+		</tr>
+		<tr>
+			<td>IL-2 (U/ml)</td>
+			<td><input class="input-change" id="feed6-il2-stock-conc" name="feed6-il2-stock-conc_number" size="10" style="text-align:center;" type="text" value="20000" /></td>
+			<td><input class="input-change" id="feed6-il2-final-conc" name="feed6-il2-final-conc_number" size="10" style="text-align:center;" type="text" value="5" /></td>
+			<td><input id="feed6-il2-to-add" name="feed6-il2-to-add_number" readonly="readonly" size="10" style="text-align:center; background-color:#a5ffb7" type="text" /></td>
+			<td>&micro;l</td>
+		</tr>
+		<tr>
+			<td>cIMDM</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td><input id="feed6-media-to-add" name="feed6-media-to-add_number" readonly="readonly" size="10" style="text-align:center; background-color:#a5ffb7" type="text" /></td>
+			<td>ml</td>
+		</tr>
+		<tr>
+			<td colspan="5">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="5" style="border-bottom: 1px solid #000;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="5" style="border-bottom: 1px solid #000;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td><u><span style="font-size:14px;"><strong>Single Stock Method</strong></span></u></td>
+			<td style="text-align:center;">Initial Volume<br />
+			(ml)</td>
+			<td style="text-align:center;">Overage<br />
+			(ml)</td>
+			<td style="text-align:center;">Total Volume<br />
+			(ml)</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><input id="feed-media-initial" name="feed-media-initial_number" readonly="readonly" size="10" style="text-align:center; background-color:#F0E6F0" type="text" /></td>
+			<td><input class="input-change" id="feed-overage" name="feed-overage_number" size="10" style="text-align:center;" type="text" /></td>
+			<td><input id="feed-media-final" name="feed-media-final_number" readonly="readonly" size="10" style="text-align:center; background-color:#F0E6F0" type="text" /></td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="5">
+			<div id="feed-error-msg" style="text-align:right; color:red; visibility:hidden"><strong>NOT ENOUGH FEEDERS: Check feeders and volume above</strong></div>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td style="text-align:center;">[Stock]</td>
+			<td style="text-align:center;">[Final]</td>
+			<td style="text-align:center;">Total Volume</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Feeder Stock (x10<sup>6</sup> cells/ml)</td>
+			<td><input id="feed-stock-conc" name="feed-stock-conc_number" readonly="readonly" size="10" style="text-align:center; background-color:#F0E6F0" type="text" /></td>
+			<td><input class="input-change" id="feed-final-conc" name="feed-final-conc_number" size="10" style="text-align:center;" type="text" value="1" /></td>
+			<td><input id="feed-feeders-to-add" name="feed-feeders-to-add_number" readonly="readonly" size="10" style="text-align:center; background-color:#a5ffb7" type="text" /></td>
+			<td>ml</td>
+		</tr>
+		<tr>
+			<td>IL-2 (U/ml)</td>
+			<td><input class="input-change" id="feed-il2-stock-conc" name="feed-il2-stock-conc_number" size="10" style="text-align:center;" type="text" value="20000" /></td>
+			<td><input class="input-change" id="feed-il2-final-conc" name="feed-il2-final-conc_number" size="10" style="text-align:center;" type="text" value="5" /></td>
+			<td><input id="feed-il2-to-add" name="feed-il2-to-add_number" readonly="readonly" size="10" style="text-align:center; background-color:#a5ffb7" type="text" /></td>
+			<td>&micro;l</td>
+		</tr>
+		<tr>
+			<td>cIMDM</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td><input id="feed-media-to-add" name="feed-media-to-add_number" readonly="readonly" size="10" style="text-align:center; background-color:#a5ffb7" type="text" /></td>
+			<td>ml</td>
+		</tr>
+		<tr>
+			<td colspan="5">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="5" style="border-bottom: 1px solid #000;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td><span style="font-size:14px;"><u><strong>Extra Media</strong></u></span></td>
+			<td style="text-align:center;">Initial Volume<br />
+			(ml)</td>
+			<td style="text-align:center;">Overage<br />
+			(ml)</td>
+			<td style="text-align:center;">Total Volume<br />
+			(ml)</td>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td>(for 12-wells)</td>
+			<td><input id="extra-media-initial" name="extra-media-initial_number" readonly="readonly" size="10" style="text-align:center; background-color:#F0E6F0" type="text" /></td>
+			<td><input class="input-change" id="extra-overage" name="extra-overage_number" size="10" style="text-align:center;" type="text" /></td>
+			<td><input id="extra-media-final" name="extra-media-final_number" readonly="readonly" size="10" style="text-align:center; background-color:#F0E6F0" type="text" /></td>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="6">&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td style="text-align:center;">[Stock]</td>
+			<td style="text-align:center;">[Final]</td>
+			<td style="text-align:center;">Total Volume</td>
+		</tr>
+		<tr>
+			<td>IL-2 (U/ml)</td>
+			<td><input class="input-change" id="extra-il2-stock-conc" name="extra-il2-stock-conc_number" size="10" style="text-align:center;" type="text" value="20000" /></td>
+			<td><input class="input-change" id="extra-il2-final-conc" name="extra-il2-final-conc_number" size="10" style="text-align:center;" type="text" value="5" /></td>
+			<td><input id="extra-il2-to-add" name="extra-il2-to-add_number" readonly="readonly" size="10" style="text-align:center; background-color:#a5ffb7" type="text" /></td>
+			<td>&micro;l</td>
+		</tr>
+		<tr>
+			<td>cIMDM</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td><input id="extra-media-to-add" name="extra-media-to-add_number" readonly="readonly" size="10" style="text-align:center; background-color:#a5ffb7" type="text" /></td>
+			<td>ml</td>
+		</tr>
+	</tbody>
+</table>
+</div>

@@ -1,0 +1,210 @@
+<style type="text/css">.widget {
+	padding: 2px;
+	border: 1px solid rgb(204, 204, 204);
+	border-radius: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #edf2f7;
+	width: 85%;
+}
+
+.heading{
+	font-size:14px;
+	text-decoration: underline;
+	font-weight: bold;
+	margin-left: 15px;
+}
+
+.section {
+	margin: 15px;
+	padding: 15px;
+	border: 1px solid black;
+	font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+	border-radius: 8px;
+	background-color: LightSteelBlue;
+	width: 87%;
+}
+
+
+.qvoa-input {
+	min-width: 160px;
+	margin-right: 15px;
+	font-weight: bold;
+	display: inline-block;
+}
+
+#qvoa-setup-info input {
+	width: 130px;
+}
+
+table {
+	width: 90%;
+	margin-left: 15px;
+	margin-bottom: 30px;
+	margin-right: 15px;
+	background-color: #edf2f7;
+}
+
+td, table, th {
+	border-collapse: collapse;
+	border: 1px solid black;
+	padding: 3px;
+	font-family: Tahoma, Geneva, sans-serif;
+}
+
+th {
+	background-color: LightSteelBlue;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+ul {
+	margin-left: 15px;
+	font-size: 11px;
+}
+
+#setup-calculations input, #reagents input {
+	width: 50px;
+}
+
+#setup-calculations input, #setup-calculations td {
+	text-align: center;
+	white-space: nowrap;
+}
+
+#notes{
+	margin: 15px;
+	padding: 15px;
+	width: 80%;
+	height: 50px;
+	text-align: left;
+}
+</style>
+<div class="widget"><!-- General Information about D1 Setup --><span class="heading">QVOA: D1 PHA Setup</span>
+<div class="section"><span class="qvoa-input">Setup Date</span><input id="setup-date" name="setup-date" type="date" /><br />
+<span class="qvoa-input">Technicians</span><input id="technicians" name="technicians" type="text" /></div>
+
+<div>
+<table id="reagents">
+	<thead>
+		<tr>
+			<th>Reagent</th>
+			<th>Stock Concentration</th>
+			<th>Final Concentration</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Resting Cells</td>
+			<td><input class="input-change" id="resting-cell-stock" name="resting-cell-stock" type="text" value="10" /> x10<sup>6</sup> cells/ml</td>
+			<td>(see below)</td>
+		</tr>
+		<tr>
+			<td>Irradiated Cells</td>
+			<td><input class="input-change" id="irradiated-cell-stock" name="irradiated-cell-stock" type="text" value="10" /> x10<sup>6</sup> cells/ml</td>
+			<td>(see below)</td>
+		</tr>
+		<tr>
+			<td>PHA</td>
+			<td><input class="input-change" id="pha-stock" name="pha-stock" type="text" value="2" /> mg/ml</td>
+			<td><input class="input-change" id="pha-final" name="pha-final" type="text" value="1.5" /> &micro;g/ml</td>
+		</tr>
+		<tr>
+			<td>IL-2</td>
+			<td><input class="input-change" id="il2-stock" name="il2-stock" type="text" value="20000" /> U/ml</td>
+			<td><input class="input-change" id="il2-final" name="il2-final" type="text" value="60" /> U/ml</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<div id="qvoa-setup">
+<table id="setup-calculations">
+	<thead>
+		<tr>
+			<th>Resting Cell Dilution</th>
+			<th>Number of Wells</th>
+			<th>Amount Resting Cells<br />
+			(10<sup>6</sup> cells)</th>
+			<th>Volume Resting Cells</th>
+			<th>Amount Irradiated Cells<br />
+			(10<sup>6</sup> cells)</th>
+			<th>Volume Irradiated Cells</th>
+			<th>Volume cIMDM</th>
+			<th>Final Total Volume</th>
+			<th>Volume PHA</th>
+			<th>Volume IL-2</th>
+			<th>Total Volume<br />
+			per Well</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="setup-calculation">
+			<td><input class="input-change cell-dilution" id="cell-dilution1" name="cell-dilution1" type="text" value="2.5" /></td>
+			<td><input class="input-change wells" id="wells1" name="wells1" type="text" value="18" /></td>
+			<td><span class="resting-cells">&nbsp;</span></td>
+			<td><span class="resting-cell-volume">&nbsp;</span></td>
+			<td><span class="irradiated-cells">&nbsp;</span></td>
+			<td><span class="irradiated-cell-volume">&nbsp;</span></td>
+			<td><span class="cIMDM-volume">&nbsp;</span></td>
+			<td><span class="total-volume">&nbsp;</span></td>
+			<td><span class="pha-volume">&nbsp;</span></td>
+			<td><span class="il2-volume">&nbsp;</span></td>
+			<td><input class="input-change vol-per-well" id="vol-per-well1" name="vol-per-well1" type="text" value="8" /></td>
+		</tr>
+		<tr class="setup-calculation">
+			<td><input class="input-change cell-dilution" id="cell-dilution2" name="cell-dilution2" type="text" value="0.5" /></td>
+			<td><input class="input-change wells" id="wells2" name="wells2" type="text" value="6" /></td>
+			<td><span class="resting-cells">&nbsp;</span></td>
+			<td><span class="resting-cell-volume">&nbsp;</span></td>
+			<td><span class="irradiated-cells">&nbsp;</span></td>
+			<td><span class="irradiated-cell-volume">&nbsp;</span></td>
+			<td><span class="cIMDM-volume">&nbsp;</span></td>
+			<td><span class="total-volume">&nbsp;</span></td>
+			<td><span class="pha-volume">&nbsp;</span></td>
+			<td><span class="il2-volume">&nbsp;</span></td>
+			<td><input class="input-change vol-per-well" id="vol-per-well2" name="vol-per-well2" type="text" value="4" /></td>
+		</tr>
+		<tr class="setup-calculation">
+			<td><input class="input-change cell-dilution" id="cell-dilution3" name="cell-dilution3" type="text" value="0.1" /></td>
+			<td><input class="input-change wells" id="wells3" name="wells3" type="text" value="6" /></td>
+			<td><span class="resting-cells">&nbsp;</span></td>
+			<td><span class="resting-cell-volume">&nbsp;</span></td>
+			<td><span class="irradiated-cells">&nbsp;</span></td>
+			<td><span class="irradiated-cell-volume">&nbsp;</span></td>
+			<td><span class="cIMDM-volume">&nbsp;</span></td>
+			<td><span class="total-volume">&nbsp;</span></td>
+			<td><span class="pha-volume">&nbsp;</span></td>
+			<td><span class="il2-volume">&nbsp;</span></td>
+			<td><input class="input-change vol-per-well" id="vol-per-well3" name="vol-per-well3" type="text" value="4" /></td>
+		</tr>
+		<tr class="setup-calculation">
+			<td><input class="input-change cell-dilution" id="cell-dilution4" name="cell-dilution4" type="text" value="" /></td>
+			<td><input class="input-change wells" id="wells4" name="wells4" type="text" value="" /></td>
+			<td><span class="resting-cells">&nbsp;</span></td>
+			<td><span class="resting-cell-volume">&nbsp;</span></td>
+			<td><span class="irradiated-cells">&nbsp;</span></td>
+			<td><span class="irradiated-cell-volume">&nbsp;</span></td>
+			<td><span class="cIMDM-volume">&nbsp;</span></td>
+			<td><span class="total-volume">&nbsp;</span></td>
+			<td><span class="pha-volume">&nbsp;</span></td>
+			<td><span class="il2-volume">&nbsp;</span></td>
+			<td><input class="input-change vol-per-well" id="vol-per-well4" name="vol-per-well4" type="text" value="" /></td>
+		</tr>
+	</tbody>
+</table>
+
+<div class="section" id="note-section"><span class="heading">Notes &amp; Discrepancies</span><br />
+<textarea id="notes" name="notes"></textarea></div>
+</div>
+
+<div class="section calculation-notes"><span class="heading">Calculation Notes</span>
+
+<ul>
+	<li>Amount of Resting Cells = (Number of Wells + 1) x (Resting Cell Dilution)</li>
+	<li>Volume Resting Cells = (Amount Resting Cells) / (Cell Stock Concentration)</li>
+	<li>Amount of Irradiated Cells = (Number of Wells + 1) x (5-fold Excess of Resting Cell Dilution)</li>
+	<li>Volume Irradiated Cells = (Amount Irradiated Cells) / (Irradiated Cell Stock Concentration)</li>
+	<li>Volume cIMDM = (Number of Wells + 1 x Volume per Well) - (Sum of all cell &amp; reagent volumes)</li>
+</ul>
+</div>
+</div>
